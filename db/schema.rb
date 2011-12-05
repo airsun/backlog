@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111205085932) do
+ActiveRecord::Schema.define(:version => 20111205093455) do
+
+  create_table "backlogentries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "status"
+    t.integer  "priority"
+    t.integer  "resolution"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "issuetype_id"
+    t.integer  "project_id"
+  end
 
   create_table "issuetypes", :force => true do |t|
     t.string   "name"
