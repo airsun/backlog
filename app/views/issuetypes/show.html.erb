@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @issuetype.name %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @issuetype.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_issuetype_path(@issuetype) %> |
+<%= link_to 'Back', issuetypes_path %>

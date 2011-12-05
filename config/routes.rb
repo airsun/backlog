@@ -1,4 +1,10 @@
 Backlog::Application.routes.draw do
+  resources :backlogentries
+
+  resources :issuetypes
+
+  resources :projects
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

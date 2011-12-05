@@ -1,0 +1,31 @@
+<h1>Listing backlogentries</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Priority</th>
+    <th>Resolution</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @backlogentries.each do |backlogentry| %>
+  <tr>
+    <td><%= backlogentry.title %></td>
+    <td><%= backlogentry.description %></td>
+    <td><%= backlogentry.status %></td>
+    <td><%= backlogentry.priority %></td>
+    <td><%= backlogentry.resolution %></td>
+    <td><%= link_to 'Show', backlogentry %></td>
+    <td><%= link_to 'Edit', edit_backlogentry_path(backlogentry) %></td>
+    <td><%= link_to 'Destroy', backlogentry, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Backlogentry', new_backlogentry_path %>
