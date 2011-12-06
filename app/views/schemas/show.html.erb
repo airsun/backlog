@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @schema.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @schema.description %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @schema.active %>
+</p>
+
+
+<%= link_to 'Edit', edit_schema_path(@schema) %> |
+<%= link_to 'Back', schemas_path %>

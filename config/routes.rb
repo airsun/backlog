@@ -1,4 +1,6 @@
 Backlog::Application.routes.draw do
+  resources :schemas
+
   resources :backlogentries
 
   resources :issuetypes

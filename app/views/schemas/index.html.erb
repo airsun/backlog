@@ -1,0 +1,27 @@
+<h1>Listing schemas</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Active</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @schemas.each do |schema| %>
+  <tr>
+    <td><%= schema.title %></td>
+    <td><%= schema.description %></td>
+    <td><%= schema.active %></td>
+    <td><%= link_to 'Show', schema %></td>
+    <td><%= link_to 'Edit', edit_schema_path(schema) %></td>
+    <td><%= link_to 'Destroy', schema, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Schema', new_schema_path %>
