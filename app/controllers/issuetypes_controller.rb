@@ -41,7 +41,7 @@ class IssuetypesController < ApplicationController
   # POST /issuetypes.json
   def create
     @issuetype = Issuetype.new(params[:issuetype])
-
+    @issuetype.schema = Schema.find(1)
     respond_to do |format|
       if @issuetype.save
         format.html { redirect_to @issuetype, notice: 'Issuetype was successfully created.' }
