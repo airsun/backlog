@@ -25,7 +25,7 @@ class IssuetypesController < ApplicationController
   # GET /issuetypes/new.json
   def new
     @issuetype = Issuetype.new
-
+    @issuetype.schema_id = params[:schema_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @issuetype }
