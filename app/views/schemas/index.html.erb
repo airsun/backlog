@@ -8,6 +8,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @schemas.each do |schema| %>
@@ -17,7 +18,7 @@
     <td><%= schema.active %></td>
     <td><%= link_to 'Show', schema %></td>
     <td><%= link_to 'Edit', edit_schema_path(schema) %></td>
-    <td><%= link_to 'Destroy', schema, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Issue Types', schema_issuetypes_path(schema) %></td>
   </tr>
 <% end %>
 </table>
