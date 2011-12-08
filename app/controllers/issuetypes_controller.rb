@@ -2,10 +2,10 @@ class IssuetypesController < ApplicationController
   # GET /issuetypes
   # GET /issuetypes.json
   def index
-    @issuetypes = Issuetype.all
+    @issuetypes = Issuetype.find_all_by_schema_id(params[:schema_id])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {redirect_to schema_issuetype_url}
       format.json { render json: @issuetypes }
     end
   end

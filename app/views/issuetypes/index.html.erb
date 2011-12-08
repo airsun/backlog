@@ -13,8 +13,8 @@
   <tr>
     <td><%= issuetype.name %></td>
     <td><%= issuetype.active %></td>
-    <td><%= link_to 'Show', issuetype %></td>
-    <td><%= link_to 'Edit', edit_issuetype_path(issuetype) %></td>
+    <td><%= link_to 'Show', schema_issuetype_path %></td>
+    <td><%= link_to 'Edit', edit_schema_issuetype_path(issuetype) %></td>
     <td><%= link_to 'Destroy', issuetype, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
@@ -22,4 +22,4 @@
 
 <br />
 
-<%= link_to 'New Issuetype', new_issuetype_path %>
+<%= link_to 'New Issuetype', new_schema_issuetype_path %>
