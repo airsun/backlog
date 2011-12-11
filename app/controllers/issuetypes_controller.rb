@@ -5,7 +5,7 @@ class IssuetypesController < ApplicationController
     @issuetypes = Issuetype.find_all_by_schema_id(params[:schema_id])
 
     respond_to do |format|
-      format.html {redirect_to schema_issuetype_url}
+      format.html # index.html.erb
       format.json { render json: @issuetypes }
     end
   end
@@ -35,17 +35,18 @@ class IssuetypesController < ApplicationController
   # GET /issuetypes/1/edit
   def edit
     @issuetype = Issuetype.find(params[:id])
+    @schema = Schema.find(@issuetype.schema_id)
   end
 
   # POST /issuetypes
   # POST /issuetypes.json
   def create
     @issuetype = Issuetype.new(params[:issuetype])
-    @issuetype.schema = Schema.find(1)
+    @issuetype.schema = Schema.find(@issuetype.schema_id)
     respond_to do |format|
       if @issuetype.save
-        format.html { redirect_to @issuetype, notice: 'Issuetype was successfully created.' }
-        format.json { render json: @issuetype, status: :created, location: @issuetype }
+        format.html { redirect_to schema_issuetypes_path(@schema), notice: 'Issuetype was successfully created.' }
+        #format.json { render json: @issuetype, status: :created, location: @issuetype }
       else
         format.html { render action: "new" }
         format.json { render json: @issuetype.errors, status: :unprocessable_entity }
@@ -76,7 +77,7 @@ class IssuetypesController < ApplicationController
     @issuetype.destroy
 
     respond_to do |format|
-      format.html { redirect_to issuetypes_url }
+      format.html
       format.json { head :ok }
     end
   end

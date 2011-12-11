@@ -13,9 +13,7 @@
   <tr>
     <td><%= issuetype.name %></td>
     <td><%= issuetype.active %></td>
-    <td><%= link_to 'Show', schema_issuetype_path %></td>
-    <td><%= link_to 'Edit', edit_schema_issuetype_path(issuetype) %></td>
-    <td><%= link_to 'Destroy', issuetype, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy',[@schema,issuetype] ,confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

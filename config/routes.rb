@@ -8,7 +8,7 @@ Backlog::Application.routes.draw do
   resources :backlogentries
 
   # nested in schemas
-  #resources :issuetypes
+  resources :issuetypes
 
   resources :projects
 
