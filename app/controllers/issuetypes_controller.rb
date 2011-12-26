@@ -45,7 +45,7 @@ class IssuetypesController < ApplicationController
     @issuetype.schema = Schema.find(@issuetype.schema_id)
     respond_to do |format|
       if @issuetype.save
-        format.html { redirect_to schema_issuetypes_path(@schema), notice: 'Issuetype was successfully created.' }
+        format.html { redirect_to schema_issuetypes_path(@issuetype.schema), notice: 'Issuetype was successfully created.' }
         #format.json { render json: @issuetype, status: :created, location: @issuetype }
       else
         format.html { render action: "new" }
@@ -74,10 +74,11 @@ class IssuetypesController < ApplicationController
   # DELETE /issuetypes/1.json
   def destroy
     @issuetype = Issuetype.find(params[:id])
+    #@schema = Schema.find(@issuetype.schema_id)
     @issuetype.destroy
 
     respond_to do |format|
-      format.html
+      format.html { redirect_to schema_issuetypes_path(@issuetype.schema), notice: 'Issuetype was successfully destroied.' }
       format.json { head :ok }
     end
   end
