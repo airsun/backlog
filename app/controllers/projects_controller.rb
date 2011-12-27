@@ -25,11 +25,10 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-    @schemas = Schema.find_all_by_active(1)
+    @schemas = Schema.find_all_by_active(true)
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @project }
-      format.json { render json: @schemas }
+      format.json { render json: [@project,@schemas] }
     end
   end
 
