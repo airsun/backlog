@@ -25,16 +25,18 @@ class ProjectsController < ApplicationController
   # GET /projects/new.json
   def new
     @project = Project.new
-
+    @schemas = Schema.find_all_by_active(1)
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project }
+      format.json { render json: @schemas }
     end
   end
 
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    @schemas = Schema.find_all_by_active(true)
   end
 
   # POST /projects
@@ -56,7 +58,6 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
-    @project.issuetypes << Issuetype.new(:name => "Story",:active => true)
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }

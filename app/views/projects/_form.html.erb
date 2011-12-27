@@ -31,6 +31,10 @@
     <%= f.label :active %><br />
     <%= f.check_box :active %>
   </div>
+  <div class="field">
+    <%= f.label :schema_id %><br />
+    <%= f.select :schema_id,@schemas.collect{|c|[c.title,c.id]}%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
