@@ -5,12 +5,9 @@ Backlog::Application.routes.draw do
     resources :issuetypes
   end
 
-  resources :backlogentries
-
-  # nested in schemas
-  resources :issuetypes
-
-  resources :projects
+  resources :projects do
+    resources :backlogentries
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

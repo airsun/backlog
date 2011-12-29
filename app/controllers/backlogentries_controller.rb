@@ -2,7 +2,7 @@ class BacklogentriesController < ApplicationController
   # GET /backlogentries
   # GET /backlogentries.json
   def index
-    @backlogentries = Backlogentry.all
+    @backlogentries = Backlogentry.find_all_by_project_id(params[:schema_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,16 +25,18 @@ class BacklogentriesController < ApplicationController
   # GET /backlogentries/new.json
   def new
     @backlogentry = Backlogentry.new
-
+    @backlogentry.project_id = params[:project_id]
+    @project = Project.find(params[:project_id])
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @backlogentry }
+      format.json { render json: [@project,@backlogentry] }
     end
   end
 
   # GET /backlogentries/1/edit
   def edit
     @backlogentry = Backlogentry.find(params[:id])
+    @project = Project.find(@backlogentry.project_id)
   end
 
   # POST /backlogentries
