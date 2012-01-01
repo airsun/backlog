@@ -2,8 +2,8 @@ class BacklogentriesController < ApplicationController
   # GET /backlogentries
   # GET /backlogentries.json
   def index
-    @backlogentries = Backlogentry.find_all_by_project_id(params[:schema_id])
-
+    @backlogentries = Backlogentry.find_all_by_project_id(params[:project_id])
+    @project = Project.find(params[:project_id])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @backlogentries }
@@ -25,7 +25,6 @@ class BacklogentriesController < ApplicationController
   # GET /backlogentries/new.json
   def new
     @backlogentry = Backlogentry.new
-    @backlogentry.project_id = params[:project_id]
     @project = Project.find(params[:project_id])
     respond_to do |format|
       format.html # new.html.erb
@@ -46,8 +45,8 @@ class BacklogentriesController < ApplicationController
 
     respond_to do |format|
       if @backlogentry.save
-        format.html { redirect_to @backlogentry, notice: 'Backlogentry was successfully created.' }
-        format.json { render json: @backlogentry, status: :created, location: @backlogentry }
+        format.html { redirect_to project_backlogentries_path(@backlogentry.project), notice: 'Backlogentry was successfully created.' }
+        #format.json { render json: @backlogentry, status: :created, location: @backlogentry }
       else
         format.html { render action: "new" }
         format.json { render json: @backlogentry.errors, status: :unprocessable_entity }
@@ -62,7 +61,7 @@ class BacklogentriesController < ApplicationController
 
     respond_to do |format|
       if @backlogentry.update_attributes(params[:backlogentry])
-        format.html { redirect_to @backlogentry, notice: 'Backlogentry was successfully updated.' }
+        format.html { redirect_to project_backlogentries_path(@backlogentry.project), notice: 'Backlogentry was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -75,10 +74,11 @@ class BacklogentriesController < ApplicationController
   # DELETE /backlogentries/1.json
   def destroy
     @backlogentry = Backlogentry.find(params[:id])
+    @project = @backlogentry.project
     @backlogentry.destroy
 
     respond_to do |format|
-      format.html { redirect_to backlogentries_url }
+      format.html { redirect_to project_backlogentries_url @project}
       format.json { head :ok }
     end
   end

@@ -1,4 +1,4 @@
-<%= form_for(@backlogentry) do |f| %>
+<%= form_for([@project,@backlogentry]) do |f| %>
   <% if @backlogentry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@backlogentry.errors.count, "error") %> prohibited this backlogentry from being saved:</h2>
@@ -18,6 +18,10 @@
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :project_id %><br />
+    <%= f.number_field :project_id %>
   </div>
   <div class="field">
     <%= f.label :status %><br />

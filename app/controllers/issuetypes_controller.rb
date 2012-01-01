@@ -3,7 +3,7 @@ class IssuetypesController < ApplicationController
   # GET /issuetypes.json
   def index
     @issuetypes = Issuetype.find_all_by_schema_id(params[:schema_id])
-
+    @schema = Schema.find(params[:schema_id])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @issuetypes }
@@ -25,7 +25,7 @@ class IssuetypesController < ApplicationController
   # GET /issuetypes/new.json
   def new
     @issuetype = Issuetype.new
-    @issuetype.schema_id = params[:schema_id]
+    @schema = Schema.find(params[:schema_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @issuetype }
@@ -35,7 +35,7 @@ class IssuetypesController < ApplicationController
   # GET /issuetypes/1/edit
   def edit
     @issuetype = Issuetype.find(params[:id])
-    @schema = Schema.find(@issuetype.schema_id)
+    @schema = @issuetype.schema
   end
 
   # POST /issuetypes
@@ -61,7 +61,7 @@ class IssuetypesController < ApplicationController
 
     respond_to do |format|
       if @issuetype.update_attributes(params[:issuetype])
-        format.html { redirect_to @issuetype, notice: 'Issuetype was successfully updated.' }
+        format.html { redirect_to schema_issuetypes_url(@issuetype.schema), notice: 'Issuetype was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

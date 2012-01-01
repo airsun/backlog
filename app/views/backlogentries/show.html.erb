@@ -26,5 +26,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_backlogentry_path(@backlogentry) %> |
-<%= link_to 'Back', backlogentries_path %>
+<%= link_to 'Edit', edit_project_backlogentry_path(@backlogentry.project,@backlogentry) %> |
+<%= link_to 'Back', project_backlogentries_path(@project) %>

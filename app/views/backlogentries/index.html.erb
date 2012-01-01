@@ -19,9 +19,9 @@
     <td><%= backlogentry.status %></td>
     <td><%= backlogentry.priority %></td>
     <td><%= backlogentry.resolution %></td>
-    <td><%= link_to 'Show', backlogentry %></td>
-    <td><%= link_to 'Edit', edit_backlogentry_path(backlogentry) %></td>
-    <td><%= link_to 'Destroy', backlogentry, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', project_backlogentry_path(@project,backlogentry) %></td>
+    <td><%= link_to 'Edit', edit_project_backlogentry_path(@project,backlogentry) %></td>
+    <td><%= link_to 'Destroy', [@project,backlogentry], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
